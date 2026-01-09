@@ -70,6 +70,11 @@ export const UpdateCost = () => {
     setIsLoading(true)
     await mutationAsync(payload)
     setIsLoading(false)
+    toast.success({
+      durationMs: 5000,
+      title: 'Ação concluída com sucesso!',
+      description: `O custo ${data?.name} foi atualizado!`
+    })
   }
 
   const { control, handleSubmit } = useForm({

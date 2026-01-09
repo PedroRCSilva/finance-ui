@@ -9,6 +9,7 @@ import { sanitizePrice } from '@utils/formatters'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { MANAGEMENT_ROUTER } from '@constants/routes'
+import { toast } from '@lib/toast'
 
 export const CreateCost = () => {
   const { categories } = useCategory()
@@ -33,6 +34,11 @@ export const CreateCost = () => {
     setIsLoading(true)
     await mutationAsync(payload)
     setIsLoading(false)
+    toast.success({
+      durationMs: 5000,
+      title: 'Ação concluída com sucesso!',
+      description: `O custo ${data?.name} foi adicionado!`
+    })
     const url = MANAGEMENT_ROUTER.path ?? ''
     navigate('/' + url)
   }
