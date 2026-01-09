@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useCategoryById, useUpdateCategory } from '@hooks'
+import { toast } from '@lib/toast'
 import { schemaCategory } from '@pages/create-category/data/schema'
 import { CreateCategoryView } from '@pages/create-category/view'
 import { CategoryTypeEnum } from '@pages/list-category/hooks/use-list-category/types'
@@ -38,6 +39,11 @@ export const UpdateCategory = () => {
 
     await mutationAsync(payload)
     navigate('/gerenciamento')
+    toast.success({
+      durationMs: 5000,
+      title: 'Ação concluída com sucesso!',
+      description: `A categoria ${data?.title} foi atualizada!`
+    })
   }
 
   return (

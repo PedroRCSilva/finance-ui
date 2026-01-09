@@ -8,6 +8,7 @@ import { useCreateCategory } from '@hooks'
 import { CategoryTypeEnum } from '@pages/list-category/hooks/use-list-category/types'
 import { ICategoryRequest } from '@services/category-service/types'
 import { useNavigate } from 'react-router-dom'
+import { toast } from '@lib/toast'
 
 export const CreateCategory = () => {
   const navigate = useNavigate()
@@ -32,6 +33,11 @@ export const CreateCategory = () => {
 
     await mutationAsync(payload)
     navigate('/gerenciamento')
+    toast.success({
+      durationMs: 5000,
+      title: 'Ação concluída com sucesso!',
+      description: `A categoria ${data?.title} foi adicionado!`
+    })
   }
 
   return <CreateCategoryView title="Criar Categoria" control={control} handleSubmit={handleSubmit(saveCategory)} />
