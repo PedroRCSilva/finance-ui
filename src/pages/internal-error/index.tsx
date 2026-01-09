@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const InternalError = () => {
   return (
     <section className="flex h-screen w-screen flex-col items-center justify-center gap-5">
