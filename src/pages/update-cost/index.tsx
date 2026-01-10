@@ -69,6 +69,7 @@ export const UpdateCost = () => {
 
     setIsLoading(true)
     await mutationAsync(payload)
+    navigate('/gerenciamento')
     setIsLoading(false)
     toast.success({
       durationMs: 5000,
