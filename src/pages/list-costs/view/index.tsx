@@ -5,7 +5,7 @@ import { Button } from '@components/ui/button'
 import { IoMdArrowRoundBack } from 'react-icons/io'
 import { useNavigate } from 'react-router-dom'
 
-export const ListCostsView: React.FC<IListCostsView> = ({ costs }) => {
+export const ListCostsView: React.FC<IListCostsView> = ({ costs, categoryName }) => {
   const navigate = useNavigate()
   return (
     <>
@@ -16,7 +16,9 @@ export const ListCostsView: React.FC<IListCostsView> = ({ costs }) => {
             onClick={() => navigate(-1)}>
             <IoMdArrowRoundBack size={20} className="w-10 text-black" />
           </Button>
-          <h3 className="font-medium">Saidas</h3>
+          <div className="flex w-full gap-1">
+            <strong>Saidas</strong> - <h3 className="font-medium">{categoryName}</h3>
+          </div>
         </div>
         <div>
           <ul>
